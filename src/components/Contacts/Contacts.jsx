@@ -4,10 +4,11 @@ import ContactForm from "./ContactForm";
 import Filter from "./Filter";
 import ContactList from "./ContactList";
 import s from './contacts.module.css'
+import {initialState} from './initialState'
 
 class Contacts extends Component {
     state = {
-        contacts: [],
+        contacts: [...initialState],
         filter: ''
     }
     
@@ -85,3 +86,4 @@ class Contacts extends Component {
 }
 
 export default Contacts 
+

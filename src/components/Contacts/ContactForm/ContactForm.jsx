@@ -1,14 +1,14 @@
+import PropTypes from 'prop-types';
 import { Component } from "react";
 import {nanoid} from 'nanoid'
 import s from './contactForm.module.css'
 
 class ContactForm extends Component {
+
     state = {
         name: '',
         number: ''
     }
-
-    loginInputId = nanoid();
 
     handleSubmit = (e) => {
         const { name, number } = this.state
@@ -26,16 +26,16 @@ class ContactForm extends Component {
 
     render() {
         const { name, number } = this.state;
-        const { handleSubmit, handleChange, loginInputId } = this;
+        const { handleSubmit, handleChange } = this;
 
         return (
 
             <form onSubmit={handleSubmit}>
                 <div className={s.container}>
-                    <label htmlFor={loginInputId} className={s.label}>Name</label>
+                    <label htmlFor={nanoid()} className={s.label}>Name</label>
                     <input
                         className={s.input}
-                    id={loginInputId}
+                    id={nanoid()}
                     type="text"
                     value={name}
                     name="name"
@@ -44,10 +44,10 @@ class ContactForm extends Component {
                     required/>
                 </div>
                 <div className={s.container}>
-                    <label htmlFor={loginInputId} className={s.label}>Number</label>
+                    <label htmlFor={nanoid()} className={s.label}>Number</label>
                     <input
                         className={s.input}
-                    id={loginInputId}
+                    id={nanoid()}
                     type="tel"
                     value={number}
                     name="number"
@@ -62,3 +62,11 @@ class ContactForm extends Component {
 }
 
 export default ContactForm
+
+ContactForm.defaultProps = {
+    onSubmit: function () {}
+}
+
+ContactForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired
+}

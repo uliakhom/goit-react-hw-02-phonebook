@@ -1,4 +1,5 @@
-import {nanoid} from 'nanoid'
+import PropTypes from 'prop-types';
+import { nanoid } from 'nanoid'
 import s from './filter.module.css'
 
 const Filter = ({ filterContact, filter }) => {
@@ -12,3 +13,12 @@ const Filter = ({ filterContact, filter }) => {
 }
 
 export default Filter
+
+Filter.defaultProps = {
+    filterContact: function() {}
+}
+
+Filter.propTypes = {
+    filterContact: PropTypes.func.isRequired,
+    filter: PropTypes.string.isRequired
+}
